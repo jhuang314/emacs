@@ -11,9 +11,9 @@
 (global-font-lock-mode 1)
 
 ; Highlight parens
-;(setq show-paren-delay 0
- ;     show-paren-style 'parenthesis)
-;(show-paren-mode 1)
+(setq show-paren-delay 0
+     show-paren-style 'parenthesis)
+(show-paren-mode 1)
 
 ; This is the binary name of scheme implementation
 (setq scheme-program-name "*.scm")
@@ -121,13 +121,14 @@
 (setq TeX-PDF-mode t)
 
 
-;Start up as full screen
+; Start up as full screen
 (defun toggle-fullscreen ()
   (interactive)
+  (when (eq window-system 'x)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 	    		 '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-	    		 '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+	    		 '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
 )
 (toggle-fullscreen)
 
@@ -145,7 +146,6 @@
 ;(global-set-key "\C-xm" 'browse-url-at-point)
 
 (setq w3m-use-cookies t)
-
 
 
 (setq longlines-wrap-follows-window-size t)
@@ -191,6 +191,3 @@
 ; Setup autopair
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
-
-
-
