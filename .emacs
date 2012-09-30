@@ -131,6 +131,9 @@
 )
 (toggle-fullscreen)
 
+; Setup default font size
+(set-face-attribute 'default nil :height 90)
+
 ; Smooth scrolling
 (require 'smooth-scroll)
 (smooth-scroll-mode t)
@@ -158,3 +161,36 @@
 
 ;configure tramp to use ssh
 (setq tramp-default-method "ssh")
+
+; add web mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
+
+(defun web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-script-offset 5)
+)
+(add-hook 'web-mode-hook  'web-mode-hook)
+(put 'erase-buffer 'disabled nil)
+
+; Setup hippie expand
+(global-set-key "\M- " 'hippie-expand)
+
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+
+
+; Bind M-f, M-b to viper style word movement
+(setq viper-mode)
+(require 'viper)
+(global-set-key (kbd "M-f") 'viper-forward-word)
+(global-set-key (kbd "M-b") 'viper-backward-word)
+
+; Setup autopair
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
+
+
