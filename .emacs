@@ -130,6 +130,7 @@
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 	    		 '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
 )
+(global-set-key [f11] 'toggle-fullscreen)
 (toggle-fullscreen)
 
 ; Setup default font size
@@ -170,6 +171,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
 
 (defun web-mode-hook ()
+
   "Hooks for Web mode."
   (setq web-mode-script-offset 5)
 )
@@ -191,3 +193,7 @@
 ; Setup autopair
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
+
+; Setup comment region
+(global-set-key [f9] 'comment-region)
+
