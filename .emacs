@@ -194,6 +194,21 @@
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-; Setup comment region
+; Setup comment region, but just found out that M-; does something more awesome
 (global-set-key [f9] 'comment-region)
 
+; Enable flyspell prog mode
+(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+(add-hook 'message-mode-hook 'turn-on-flyspell)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'c-mode-common-hook 'flyspell-prog-mode)
+(add-hook 'tcl-mode-hook 'flyspell-prog-mode)
+(defun turn-on-flyspell ()
+   "Force flyspell-mode on using a positive arg.  For use in hooks."
+   (interactive)
+   (flyspell-mode 1))
+
+; Add yasnippet
+(add-to-list 'load-path "~/.elisp/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
