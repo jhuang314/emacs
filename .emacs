@@ -212,3 +212,23 @@
 (add-to-list 'load-path "~/.elisp/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+; Add GLSL mode
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.vp\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.fp\\'" . glsl-mode))
+
+; Enable IDO mode
+(require 'ido)
+(ido-mode t)
+
+; M-x mode with IDO
+(global-set-key
+ "\M-x"
+ (lambda ()
+   (interactive)
+   (call-interactively
+    (intern
+     (ido-completing-read
+      "M-x "
+      (all-completions "" obarray 'commandp))))))
