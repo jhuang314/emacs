@@ -1,11 +1,13 @@
 ; Set colors!
-(set-background-color "black")
-(set-face-background 'default "black")
-(set-face-background 'region "pink")
-(set-face-foreground 'default "white")
-(set-face-foreground 'region "blue")
-(set-foreground-color "white")
-(set-cursor-color "red")
+;; (set-background-color "black")
+;; (set-face-background 'default "black")
+;; (set-face-background 'region "pink")
+;; (set-face-foreground 'default "white")
+;; (set-face-foreground 'region "blue")
+;; (set-foreground-color "white")
+;; (set-cursor-color "red")
+(load "~/.emacs.d/monokai-theme.el")
+(color-theme-monokai)
 
 ; Always do syntax highlighting
 (global-font-lock-mode 1)
